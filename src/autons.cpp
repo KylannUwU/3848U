@@ -118,7 +118,7 @@ void Skills2()
   chassis.pid_swing_set(ez::RIGHT_SWING, 90_deg, 110, -12 );
   pros::delay(650);
   chassis.pid_drive_set(-14_in, 120);
-  pros::delay(550);
+  pros::delay(570);
   mobile.set_value(true);
   pros::delay(200);
 
@@ -131,18 +131,20 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(270_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(14_in, 120);
+  chassis.pid_drive_set(16_in, 120);
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(360_deg, 90);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(17_in, 90);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(10_in, 90);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_wait_quick_chain();
+  pros::delay(900);
   chassis.pid_turn_set(225_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(13_in, 120);
-  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(14_in, 120);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(1000);
   chassis.pid_drive_set(-3_in, 120);
   chassis.pid_wait_quick_chain();
   
@@ -164,8 +166,9 @@ void Skills2()
   targetValueLB = 5700;
   pros::delay(300);
   intake.move_voltage(12000);
-  chassis.pid_drive_set(47_in, 120);
-  chassis.pid_wait_quick();
+  chassis.pid_drive_set(48_in, 120);
+  // chassis.pid_wait_quick();
+  pros::delay(1700);
   chassis.pid_drive_set(-3_in, 120);
   chassis.pid_wait_quick();
   chassis.pid_turn_set(270_deg, 90);
@@ -187,13 +190,14 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(225_deg, 70);
   chassis.pid_wait();
-  chassis.pid_drive_set(-47_in, 120);
+  chassis.pid_drive_set(-48_in, 120);
   // chassis.pid_wait_quick_chain();
-  pros::delay(1600);
+  pros::delay(1650);
   chassis.pid_turn_set(270_deg, 90);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-19_in, 120);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_wait_quick_chain();
+  pros::delay(1300);
   mobile.set_value(true);
 
   // 5 RINGS ROUTE 
@@ -205,7 +209,7 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(90_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(14_in, 120);
+  chassis.pid_drive_set(16_in, 120);
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(0_deg, 90);
   chassis.pid_wait_quick_chain();
@@ -215,7 +219,7 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(135_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(12_in, 120);
+  chassis.pid_drive_set(14_in, 120);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-6_in, 120);
   chassis.pid_wait_quick_chain();
@@ -234,7 +238,7 @@ void Skills2()
   pros::delay(100);
 
   // N WALL STAKE 2 RINGS
-  chassis.pid_swing_set(ez::RIGHT_SWING, 180_deg, 110, 45 );
+  chassis.pid_swing_set(ez::RIGHT_SWING, 180_deg, 110, 40 );
   chassis.pid_wait_quick_chain();
   targetValueLB = 5700;
   pros::delay(300);
