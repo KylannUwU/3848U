@@ -108,7 +108,8 @@ void Skills2()
 {
 
   // ALLIANCE WS
-
+  chassis.pid_drive_constants_set(14, 0.0009, 230);///9/70
+  
   targetValueLB = 9000;
   pros::delay(400);
   targetValueLB = 4000;
@@ -356,6 +357,15 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-85_in, 120);
   chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-45_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(45_in, 120);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(135_deg, 90);
+  chassis.pid_wait_quick_chain();
+  
+
+
 
   
 
@@ -1430,7 +1440,7 @@ intake.move_voltage(0);
 void default_constants() {
 
   chassis.pid_heading_constants_set(12, 0, 20);
-  chassis.pid_drive_constants_set(14, 0.0009, 230);///9/70
+  chassis.pid_drive_constants_set(14, 0.001, 230);///9/70
   chassis.pid_drive_constants_backward_set(14, 0.001 , 230);
   chassis.pid_turn_constants_set(4.5, 0.02, 40);//2.30 /0.04 //20
   chassis.pid_swing_constants_set(5.8, 0, 68);//
