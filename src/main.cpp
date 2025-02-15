@@ -92,10 +92,10 @@ void initialize()
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      Auton("SOLO AWP RED\n\nSOLO AWP RED", soloAWP_Red_NEW),
-      Auton("SOLO AWP BLUE\n\nSOLO AWP BLUE", soloAWP_Blue_NEW),
-      Auton("Elim6R \n\n BLUE", Elims_6rings_BLUE),
-      Auton("Elim6R \n\n RED", Elims_6rings_RED),
+      // Auton("SOLO AWP RED\n\nSOLO AWP RED", soloAWP_Red_NEW),
+      // Auton("SOLO AWP BLUE\n\nSOLO AWP BLUE", soloAWP_Blue_NEW),
+      // Auton("Elim6R \n\n BLUE", Elims_6rings_BLUE),
+      // Auton("Elim6R \n\n RED", Elims_6rings_RED),
       Auton("SKILLS \n\n SkillAuton", Skills2),
       Auton("SOLO AWP Left\n\nSOLO AWP Left", soloAWP_LeftSide),
       Auton("SOLO AWP Right\n\nSOLO AWP Right", soloAWP_RightSide),

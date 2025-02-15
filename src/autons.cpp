@@ -154,27 +154,30 @@ void Skills2()
   // chassis.pid_drive_set(-8_in, 120);
   // chassis.pid_wait_quick_chain();
   chassis.drive_set(-50,-50);
-  pros::delay(600);
+  pros::delay(700);
   chassis.drive_set(0,0);
-  pros::delay(100);
+  pros::delay(50);
   mobile.set_value(false);
   intake.move_voltage(-6000);
 
   // GO TO N WALL STAKE 
-  chassis.pid_swing_set(ez::LEFT_SWING, 180_deg, 110, -35 );
+  chassis.pid_swing_set(ez::LEFT_SWING, 180_deg, 110, -30 );
   chassis.pid_wait_quick_chain();
   targetValueLB = 5700;
   pros::delay(300);
   intake.move_voltage(12000);
   chassis.pid_drive_set(48_in, 120);
   // chassis.pid_wait_quick();
-  pros::delay(1700);
+  pros::delay(1600);
   chassis.pid_drive_set(-3_in, 120);
-  chassis.pid_wait_quick();
+ // chassis.pid_wait_quick();
+  pros::delay(500);
   chassis.pid_turn_set(270_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(5_in, 120);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(5_in, 120);
+  // chassis.pid_wait_quick_chain();
+  chassis.drive_set(90,90);
+  pros::delay(400);
   intake.move_voltage(-1500);
   targetValueLB = 16500;
   pros::delay(700);
@@ -186,16 +189,16 @@ void Skills2()
   pros::delay(700);
  
   // GO TO MOGO 2
-  chassis.pid_drive_set(-8_in, 120);
-  chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(225_deg, 70);
+  chassis.pid_drive_set(-12_in, 120);
+  pros::delay(1100);
+  chassis.pid_turn_set(220_deg, 70);
   chassis.pid_wait();
-  chassis.pid_drive_set(-48_in, 120);
+  chassis.pid_drive_set(-46_in, 120);
   // chassis.pid_wait_quick_chain();
-  pros::delay(1650);
+  pros::delay(1800);
   chassis.pid_turn_set(270_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-19_in, 120);
+  chassis.pid_drive_set(-24_in, 120);
   // chassis.pid_wait_quick_chain();
   pros::delay(1300);
   mobile.set_value(true);
@@ -229,26 +232,27 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-8_in, 120);
   // chassis.pid_wait_quick_chain();
-  chassis.drive_set(-60,-60);
-  pros::delay(650);
+  chassis.drive_set(-65,-65);
+  pros::delay(700);
   chassis.drive_set(0,0);
   pros::delay(100);
   mobile.set_value(false);
   intake.move_voltage(-12000);
   pros::delay(100);
 
-  // N WALL STAKE 2 RINGS
-  chassis.pid_swing_set(ez::RIGHT_SWING, 180_deg, 110, 40 );
+  // N WALL STAKE 2
+  chassis.pid_swing_set(ez::RIGHT_SWING, 180_deg, 110, -10 );
   chassis.pid_wait_quick_chain();
   targetValueLB = 5700;
   pros::delay(300);
   intake.move_voltage(12000);
-  chassis.pid_drive_set(55_in, 120);
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-17_in, 120);
+  chassis.pid_drive_set(45_in, 120);
+  // chassis.pid_wait_quick_chain();
+  pros::delay(1500);
+  chassis.pid_drive_set(-4_in, 120);
   chassis.pid_wait_quick_chain();
   intake.move_voltage(-1500);
-  pros::delay(300);
+  pros::delay(1200);
   targetValueLB = 7000;
   pros::delay(300);
   chassis.pid_turn_set(90_deg, 90);
@@ -260,43 +264,48 @@ void Skills2()
   targetValueLB = 16500;
   pros::delay(700);
   chassis.drive_set(90,90);
-  pros::delay(300);
-  chassis.drive_set(0,0);
   pros::delay(200);
-  targetValueLB =5700;
-  pros::delay(700);
-  if(killtask)
-  {
-    IntakeDetector1.remove();
-    killtask = false;
-    pros::delay(20);
-  }
-  intake.move_voltage(12000);
-  pros::delay(900);
-  intake.move_voltage(-1500);
-  targetValueLB = 16500;
-  pros::delay(700);
-  chassis.drive_set(90,90);
-  pros::delay(300);
   chassis.drive_set(0,0);
-  pros::delay(200);
+  pros::delay(50);
   targetValueLB =4000;
   pros::delay(700);
+  // if(killtask)
+  // {
+  //   IntakeDetector1.remove();
+  //   killtask = false;
+  //   pros::delay(20);
+  // }
+  // intake.move_voltage(12000);
+  // pros::delay(500);
+  // intake.move_voltage(-1500);
+  // targetValueLB = 16500;
+  // pros::delay(700);
+  // chassis.drive_set(90,90);
+  // pros::delay(200);
+  // chassis.drive_set(0,0);
+  // pros::delay(50);
+  // targetValueLB =4000;
+  // pros::delay(700);
 
 
 
   // GO TO MOGO 3
   chassis.pid_drive_set(-10_in, 120);
-  chassis.pid_wait_quick_chain(); 
+//  chassis.pid_wait_quick_chain(); 
+  pros::delay(500);
   chassis.pid_turn_set(20_deg, 90);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-25_in, 120);
   chassis.pid_wait_quick_chain();
+  // pros::delay(1700);
   chassis.pid_swing_set(ez::RIGHT_SWING, 90_deg, 90, 0);
-  chassis.pid_wait_quick_chain();
+  pros::delay(700);
+  //chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-18_in, 120);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_wait_quick_chain();
+  pros::delay(900);
   mobile.set_value(true);
+  pros::delay(100);
 
   // 6 RINGS ROUTE
   
@@ -333,19 +342,20 @@ void Skills2()
   chassis.pid_drive_set(13_in, 50);
   chassis.pid_wait_quick_chain();
   //STACKED RING 2
-  chassis.pid_turn_set(-90_deg, 50);
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(12_in, 50);
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-5_in, 50);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_turn_set(-90_deg, 50);
+  // chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(12_in, 50);
+  // chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(-5_in, 50);
+  // chassis.pid_wait_quick_chain();
   //RELEASE MOGO
   chassis.pid_turn_set(45_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-12_in, 120);
+  chassis.pid_drive_set(-15_in, 120);
   chassis.pid_wait_quick_chain();
-  mobile.set_value(false);
-  intake.move_voltage(-6000);
+ // mobile.set_value(false);
+ pros::delay(800); 
+ intake.move_voltage(-6000);
   pros::delay(50);
 
 
@@ -356,9 +366,13 @@ void Skills2()
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-85_in, 120);
   chassis.pid_wait_quick_chain();
+
+  //HANG
   chassis.pid_turn_set(-45_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(45_in, 120);
+  chassis.pid_drive_set(40_in, 120);
+  
+  targetValueLB = 8000;
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(135_deg, 90);
   chassis.pid_wait_quick_chain();
