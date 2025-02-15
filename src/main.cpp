@@ -9,6 +9,11 @@
 #include "subsystems.hpp"
 using pros::E_MOTOR_BRAKE_HOLD;
 
+
+#define RED 1
+
+
+
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
     {
@@ -87,10 +92,8 @@ void initialize()
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-  //  Auton("TESTING \n\n TESTING", Testing),  
-    //Auton("SOLO AWP RED\n\nSOLO AWP RED", soloAWP_Red_NEW),
-      //Auton("SOLO AWP BLUE\n\nSOLO AWP BLUE", soloAWP_Blue_NEW),
-      //Auton("TESTING \n\n TESTING", IntakeTest),
+      Auton("SOLO AWP RED\n\nSOLO AWP RED", soloAWP_Red_NEW),
+      Auton("SOLO AWP BLUE\n\nSOLO AWP BLUE", soloAWP_Blue_NEW),
       Auton("Elim6R \n\n BLUE", Elims_6rings_BLUE),
       Auton("Elim6R \n\n RED", Elims_6rings_RED),
       Auton("SKILLS \n\n SkillAuton", Skills2),
@@ -217,10 +220,13 @@ void opcontrol()
          int current_time = pros::millis();
 
     
-
-    // if (opt1.get_hue() < 30.0 || opt2.get_hue() < 30.0) { // No Reds Detect: 30.0* // 45.0 
-    if (opt1.get_hue() > 150.0 || opt2.get_hue() > 150.0) { // No Blues Detect: 100.0* // 200.0 // **150.0
-        // Si el motor no está en pausa, configurar el inicio del temporizador
+    #ifdef RED
+    if (opt1.get_hue() > 150.0 || opt2.get_hue() > 150.0)  // No Blues Detect: 100.0* // 200.0 // **150.0
+    #else
+    if (opt1.get_hue() < 30.0 || opt2.get_hue() < 30.0)  // No Reds Detect: 30.0* // 45.0 
+    #endif
+    {
+      // Si el motor no está en pausa, configurar el inicio del temporizador
         if (hue_detect_time == 0) {
             hue_detect_time = current_time;
         }
