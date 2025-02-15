@@ -125,7 +125,7 @@ void Skills2()
   // 5 RINGS ROUTE
   chassis.pid_turn_set(180_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(18_in, 120);
+  chassis.pid_drive_set(17_in, 120);
   chassis.pid_wait_until(4_in);
   intake.move_voltage(12000);
   chassis.pid_wait_quick_chain();
@@ -166,7 +166,7 @@ void Skills2()
   intake.move_voltage(12000);
   chassis.pid_drive_set(47_in, 120);
   chassis.pid_wait_quick();
-  chassis.pid_drive_set(-4_in, 120);
+  chassis.pid_drive_set(-3_in, 120);
   chassis.pid_wait_quick();
   chassis.pid_turn_set(270_deg, 90);
   chassis.pid_wait_quick_chain();
@@ -305,12 +305,18 @@ void Skills2()
   // MID RING
   chassis.pid_turn_set(-45_deg, 90);
   chassis.pid_wait_quick_chain();
+  intake.move_voltage(0);
   chassis.pid_drive_set(25_in, 120);
+  chassis.pid_wait_until(16_in);
+  intake.move_voltage(12000);
   chassis.pid_wait_quick_chain();
   // CORNER RING
   chassis.pid_turn_set(-135_deg, 90);
   chassis.pid_wait_quick_chain();
+  intake.move_voltage(0);
   chassis.pid_drive_set(25_in, 120);
+  chassis.pid_wait_until(16_in);
+  intake.move_voltage(12000);
   chassis.pid_wait_quick_chain();
   // LAST ONLY1 RING
   chassis.pid_turn_set(-90_deg, 90);
@@ -320,7 +326,7 @@ void Skills2()
   //STACKED RING 1
   chassis.pid_turn_set(-180_deg, 50);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(11_in, 50);
+  chassis.pid_drive_set(13_in, 50);
   chassis.pid_wait_quick_chain();
   //STACKED RING 2
   chassis.pid_turn_set(-90_deg, 50);
@@ -332,7 +338,7 @@ void Skills2()
   //RELEASE MOGO
   chassis.pid_turn_set(45_deg, 90);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-10_in, 120);
+  chassis.pid_drive_set(-12_in, 120);
   chassis.pid_wait_quick_chain();
   mobile.set_value(false);
   intake.move_voltage(-6000);
