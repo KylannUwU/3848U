@@ -4,13 +4,19 @@
 
 extern Drive chassis;
 
+extern bool side;
+
 void Skills2();
 void Skills();
 void intakeCS();
 void soloAWP_RightSide();
 void soloAWP_LeftSide();
+void soloAWP_Blue_2Stakes();
+void soloAWP_Red_2Stakes();
 void soloAWP_Blue_NEW();
 void soloAWP_Red_NEW();
+
+
 
 void Ellims_5rings_Blue();
 void Ellims_5rings_Red();

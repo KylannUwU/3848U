@@ -10,7 +10,7 @@
 using pros::E_MOTOR_BRAKE_HOLD;
 
 
-#define RED 1
+//#define RED 1
 
 
 
@@ -28,8 +28,8 @@ ez::Drive chassis(
     },  // Right Chassis Ports (negative port will reverse it!)
 
     1,     // IMU Port
-    3.10,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-    450);  // Wheel RPM
+    3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
+    480);  // Wheel RPM
 
 bool mobileToggle = false;
 bool doinkerToggle = false;
@@ -92,10 +92,13 @@ void initialize()
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      //Auton("2stk SOLO AWP RED\n\nSOLO AWP RED", soloAWP_Red_2Stakes),
+      //Auton("2stk SOLO AWP BLUE\n\nSOLO AWP BLUE", soloAWP_Blue_2Stakes),
+ 
       // Auton("SOLO AWP RED\n\nSOLO AWP RED", soloAWP_Red_NEW),
       // Auton("SOLO AWP BLUE\n\nSOLO AWP BLUE", soloAWP_Blue_NEW),
-      // Auton("Elim6R \n\n BLUE", Elims_6rings_BLUE),
-      // Auton("Elim6R \n\n RED", Elims_6rings_RED),
+      //Auton("Elim6R \n\n BLUE", Elims_6rings_BLUE),      
+      Auton("Elim6R \n\n RED", Elims_6rings_RED),
       Auton("SKILLS \n\n SkillAuton", Skills2),
       Auton("SOLO AWP Left\n\nSOLO AWP Left", soloAWP_LeftSide),
       Auton("SOLO AWP Right\n\nSOLO AWP Right", soloAWP_RightSide),
@@ -157,6 +160,8 @@ void autonomous()
 
 void opcontrol() 
 {
+
+  
   if(autonStarted)
     autonIsDone = true;
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;

@@ -16,7 +16,7 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 90;
 
-bool side = RED;
+bool side = true;
 
 bool killtask = true;
 
@@ -93,10 +93,13 @@ void IntakeDetector()
 
 void IntakeTest()
 {
-  mobile.set_value(true);
-  pros::Task IntakeTesting(IntakeCS);
-  while(1)
-    pros::delay(20);
+  chassis.pid_drive_set(48_in, 110);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(180_deg, 90);
+  chassis.pid_wait();
+  
 }
 
 #pragma region Skills
@@ -1133,6 +1136,139 @@ void soloAWP_Red_NEW()
   
 }
 
+
+
+void soloAWP_Blue_2Stakes()
+{
+  chassis.pid_swing_set(ez::RIGHT_SWING, -45_deg, 90,0);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(350);
+  targetValueLB = 10000;
+  pros::delay(500);
+  targetValueLB = 4000;
+  pros::delay(500);
+  chassis.pid_swing_set(ez::RIGHT_SWING, 0_deg, 90,0);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(370);
+  chassis.pid_swing_set(ez::LEFT_SWING, 45_deg, 90,15);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(370);
+  intake.move_voltage(-12000);
+  pros::delay(100);
+  intake.move_voltage(0);
+  pros::delay(400);
+  pros::Task IntakeDTAWP(IntakeDetector);
+  pros::delay(1200);
+  chassis.pid_turn_set(-55_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-28_in, 110);
+  // chassis.pid_wait_quick_chain();
+  pros::delay(1200);
+  chassis.drive_set(0,0);
+  pros::delay(200);
+  mobile.set_value(true);
+  pros::delay(100);
+  chassis.pid_turn_set(-180_deg, 90);
+  chassis.pid_wait_quick_chain();
+  intake.move_voltage(12000);
+  chassis.pid_drive_set(20_in, 110);
+  chassis.pid_wait_until(3_in);
+  intake.move_voltage(12000);
+  chassis.pid_wait_quick_chain();
+  //pros::delay(800);
+  chassis.pid_drive_set(-2_in, 120);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-270_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(7.5_in, 110);
+  chassis.pid_wait_quick_chain();
+  intake.move_voltage(12000);
+  chassis.pid_swing_set(ez::RIGHT_SWING, -360_deg, 90,-30);
+  //chassis.pid_wait_quick();
+  chassis.pid_wait_quick_chain();
+  chassis.pid_swing_set(ez::RIGHT_SWING, -405_deg, 90,15);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(700);
+  chassis.pid_drive_set(13_in, 120);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-495_deg, 90); // chassis.pid_turn_set(-270_deg, 90);
+  chassis.pid_wait_quick_chain();
+  pros::delay(800);  
+  targetValueLB = 5500;
+  pros::delay(300);  
+  chassis.pid_wait_quick_chain();
+  chassis.drive_set(-40,-40);
+  pros::delay(300);
+  
+  
+}
+
+
+void soloAWP_Red_2Stakes()
+{
+  chassis.pid_swing_set(ez::LEFT_SWING, 45_deg, 90,0); // chassis.pid_swing_set(ez::RIGHT_SWING, -45_deg, 90,0);
+  pros::delay(300);
+  targetValueLB = 10000;
+  pros::delay(400);
+  targetValueLB = 4000;
+  pros::delay(400);
+  chassis.pid_swing_set(ez::LEFT_SWING, 0_deg, 90,0); // chassis.pid_swing_set(ez::RIGHT_SWING, 0_deg, 90,0);
+  pros::delay(370);
+  chassis.pid_swing_set(ez::RIGHT_SWING, -50_deg, 95,15); // chassis.pid_swing_set(ez::LEFT_SWING, 45_deg, 90,15);
+  pros::delay(370);
+  intake.move_voltage(-12000);
+  pros::delay(100);
+  intake.move_voltage(0);
+  pros::delay(400);
+  pros::Task IntakeDTAWP(IntakeDetector);
+  pros::delay(1200);
+  chassis.pid_turn_set(60_deg, 90); // chassis.pid_turn_set(-55_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-27_in, 120);
+  pros::delay(1050);
+  chassis.drive_set(0,0);
+  pros::delay(200);
+  mobile.set_value(true);
+  pros::delay(100);
+  chassis.pid_turn_set(180_deg, 90); // chassis.pid_turn_set(-180_deg, 90);
+  pros::delay(700);
+  intake.move_voltage(12000);
+  //chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(22_in, 120);
+  chassis.pid_wait_until(3_in);
+  intake.move_voltage(12000);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-3_in, 120);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(270_deg, 90); // chassis.pid_turn_set(-270_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.drive_set(90, 90);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(230);
+  chassis.drive_set(0, 0);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(50);
+  pros::Task IntakeCS1(IntakeCS);
+  chassis.pid_swing_set(ez::LEFT_SWING, 360_deg, 120,-40); // chassis.pid_swing_set(ez::RIGHT_SWING, -360_deg, 90,-30);
+  //pros::delay(530);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_swing_set(ez::LEFT_SWING, 400_deg, 120,20); // chassis.pid_swing_set(ez::RIGHT_SWING, -405_deg, 90,15);
+  pros::delay(530);
+  chassis.pid_drive_set(17_in, 120);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(495_deg, 90); // chassis.pid_turn_set(-270_deg, 90);
+  chassis.pid_wait_quick_chain();
+  pros::delay(800);  
+  targetValueLB = 5500;
+  pros::delay(300);  
+  chassis.pid_wait_quick_chain();
+  chassis.drive_set(-40,-40);
+  pros::delay(300);
+
+  
+}
+
+
 #pragma endregion soloAWP
 #pragma region Elims
 
@@ -1259,116 +1395,182 @@ void Ellims_5rings_Red()
   chassis.drive_set(0, 0);      // Stop robot
 }
 
+
+
+
 void Elims_6rings_BLUE()
 {
   // TAKE MOGO
-  chassis.pid_drive_set(-23_in, 120);
-  pros::delay(1100);  
-  mobile.set_value(true);
-  pros::delay(150);
+  chassis.pid_drive_set(-21_in, 120);
+  pros::delay(1200);  
+ //chassis.pid_wait_quick_chain(); 
+ mobile.set_value(true);
+  pros::delay(100);
 
   // AUTON LINE RINGS
-  chassis.pid_turn_set(-130_deg, 90);
-  chassis.pid_wait();
+  chassis.pid_turn_set(-140_deg, 85);
+  chassis.pid_wait_quick_chain();
   intake.move_voltage(120000);
   // chassis.pid_drive_set(12_in,110);
-  chassis.pid_drive_set(19_in,110);
+  chassis.pid_drive_set(19_in,120);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(1500);  
+  chassis.pid_swing_set(ez::LEFT_SWING, -90_deg, 80, 0);
   chassis.pid_wait_quick_chain();
-  // chassis.pid_swing_set(ez::LEFT_SWING, -90_deg, 80, 0);
-  // chassis.pid_wait_quick_chain();
-  chassis.pid_swing_set(ez::LEFT_SWING, -90_deg, 80, -30);
+  chassis.pid_drive_set(7_in,120);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(2_in,70);
+  chassis.pid_drive_set(-5_in,120);
   chassis.pid_wait_quick_chain();
-  
+  chassis.pid_swing_set(ez::LEFT_SWING, -50_deg, 127, 0);
+  //chassis.pid_wait_quick();
+  pros::delay(400);  
   // MID RING
-  chassis.pid_swing_set(ez::LEFT_SWING, 32_deg, 80, -35);
-  chassis.pid_wait_quick();
-  chassis.pid_drive_set(36_in, 120);
-  chassis.pid_wait_until(5_in);
+  chassis.pid_turn_set(12_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(25_in, 120);
+  chassis.pid_wait_until(8_in);
   intake.move_voltage(0);
-  chassis.pid_wait_until(17_in);
   side = BLUE;
+  chassis.pid_wait_until(17_in);
   pros::Task intakeControl2(IntakeCS);
   pros::delay(500);
-  chassis.pid_swing_set(ez::LEFT_SWING, -42_deg, 90, 0);
+  chassis.pid_turn_set(-45_deg, 90);
   chassis.pid_wait_quick();
  
   //CORNER RINGS
-  chassis.drive_set(70, 70);
-  pros::delay(1400);
-  for(int i = 0; i < 3; i++)
-  {
-    chassis.pid_drive_set(-2.5_in,35);
-    chassis.pid_wait_quick_chain();
-    pros::delay(400);
-    chassis.drive_set(60, 60);
-    pros::delay(800);
-    chassis.drive_set(0, 0);
-    pros::delay(200);
-  }
-  chassis.pid_drive_set(-3_in,35);
+  chassis.pid_drive_set(21_in,120);
+  pros::delay(1000);
+  //chassis.pid_wait_quick_chain();
+  chassis.drive_set(85, 85);
+  pros::delay(500);
+
+
+  // blue 1
+  chassis.pid_drive_set(-2.8_in,45);
+  chassis.pid_wait_quick_chain();
+  pros::delay(400);
+  chassis.drive_set(45, 45);
+  pros::delay(700);
+  chassis.drive_set(0, 0);
+  pros::delay(200);
+
+
+  // red 1 (discard)
+  chassis.pid_drive_set(-3_in,45);
+  chassis.pid_wait_quick_chain();
+  pros::delay(600);
+  chassis.drive_set(45, 45);
+  pros::delay(700);
+  chassis.drive_set(0, 0);
+  pros::delay(200);
+
+
+  //blue 2
+  chassis.pid_drive_set(-3_in,45);
+  chassis.pid_wait_quick_chain();
+  pros::delay(400);
+  chassis.drive_set(45, 45);
+  pros::delay(700);
+  chassis.drive_set(0, 0);
+  pros::delay(200);
+
+  chassis.pid_drive_set(-15_in,120);
   chassis.pid_wait_quick_chain();  
-  intakeControl2.remove();
-  intake.move_voltage(0);
+  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void Elims_6rings_RED()
 {
   // TAKE MOGO
-  chassis.pid_drive_set(-23_in, 120);
-  pros::delay(1100);  
-  mobile.set_value(true);
-  pros::delay(150);
+  chassis.pid_drive_set(-21_in, 120);
+  pros::delay(1200);  
+ //chassis.pid_wait_quick_chain(); 
+ mobile.set_value(true);
+  pros::delay(100);
 
   // AUTON LINE RINGS
-  // chassis.pid_turn_set(-130_deg, 90);
-  chassis.pid_turn_set(135_deg, 90); // Mirrored turn
-  chassis.pid_wait();
+  chassis.pid_turn_set(140_deg, 85);
+  chassis.pid_wait_quick_chain();
   intake.move_voltage(120000);
   // chassis.pid_drive_set(12_in,110);
-  chassis.pid_drive_set(13_in,110);
+  chassis.pid_drive_set(18_in,120);
+  //chassis.pid_wait_quick_chain();
+  pros::delay(1450);  
+  chassis.pid_swing_set(ez::RIGHT_SWING, 90_deg, 80, 0);
   chassis.pid_wait_quick_chain();
-  // chassis.pid_swing_set(ez::LEFT_SWING, -90_deg, 80, 0);
-  // chassis.pid_wait_quick_chain();
-  // chassis.pid_swing_set(ez::LEFT_SWING, -90_deg, 80, -30);
-  chassis.pid_swing_set(ez::RIGHT_SWING, 90_deg, 80, -30); // Mirrored swing
+  chassis.pid_drive_set(7_in,120);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(2_in,70);
+  chassis.pid_drive_set(-5_in,120);
   chassis.pid_wait_quick_chain();
-  
+  chassis.pid_swing_set(ez::RIGHT_SWING, 50_deg, 127, 0);
+  //chassis.pid_wait_quick();
+  pros::delay(400);  
   // MID RING
-  // chassis.pid_swing_set(ez::LEFT_SWING, 32_deg, 80, -35);
-  chassis.pid_swing_set(ez::RIGHT_SWING, -32_deg, 80, -35); // Mirrored swing
-  chassis.pid_wait_quick();
-  chassis.pid_drive_set(36_in, 120);
-  chassis.pid_wait_until(5_in);
+  chassis.pid_turn_set(-8_deg, 90);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(25_in, 120);
+  chassis.pid_wait_until(8_in);
   intake.move_voltage(0);
+  side = RED;
   chassis.pid_wait_until(17_in);
-  // side = BLUE;
   pros::Task intakeControl2(IntakeCS);
   pros::delay(500);
-  // chassis.pid_swing_set(ez::LEFT_SWING, -42_deg, 90, 0);
-  chassis.pid_swing_set(ez::RIGHT_SWING, 42_deg, 90, 0); // Mirrored swing
+  chassis.pid_turn_set(47_deg, 90);
   chassis.pid_wait_quick();
  
   //CORNER RINGS
-  chassis.drive_set(70, 70);
-  pros::delay(1400);
-  for(int i = 0; i < 3; i++)
-  {
-    chassis.pid_drive_set(-2.5_in,35);
-    chassis.pid_wait_quick_chain();
-    pros::delay(400);
-    chassis.drive_set(60, 60);
-    pros::delay(800);
-    chassis.drive_set(0, 0);
-    pros::delay(200);
-  }
-  chassis.pid_drive_set(-3_in,35);
+  chassis.pid_drive_set(21_in,120);
+  pros::delay(1050);
+  //chassis.pid_wait_quick_chain();
+  chassis.drive_set(85, 85);
+  pros::delay(500);
+
+
+  // RED 1
+  chassis.pid_drive_set(-2.8_in,45);
+  chassis.pid_wait_quick_chain();
+  pros::delay(400);
+  chassis.drive_set(45, 45);
+  pros::delay(700);
+  chassis.drive_set(0, 0);
+  pros::delay(200);
+
+
+  // BLUE 1 (discard)
+  chassis.pid_drive_set(-3_in,45);
+  chassis.pid_wait_quick_chain();
+  pros::delay(600);
+  chassis.drive_set(45, 45);
+  pros::delay(700);
+  chassis.drive_set(0, 0);
+  pros::delay(200);
+
+
+  //RED 2
+  chassis.pid_drive_set(-3_in,45);
+  chassis.pid_wait_quick_chain();
+  pros::delay(400);
+  chassis.drive_set(45, 45);
+  pros::delay(700);
+  chassis.drive_set(0, 0);
+  pros::delay(200);
+
+  chassis.pid_drive_set(-15_in,120);
   chassis.pid_wait_quick_chain();  
-  intakeControl2.remove();
-  intake.move_voltage(0);
+  
 }
 
 
@@ -1453,9 +1655,9 @@ intake.move_voltage(0);
 void default_constants() {
 
   chassis.pid_heading_constants_set(12, 0, 20);
-  chassis.pid_drive_constants_set(14, 0.001, 230);///9/70
-  chassis.pid_drive_constants_backward_set(14, 0.001 , 230);
-  chassis.pid_turn_constants_set(4.5, 0.02, 40);//2.30 /0.04 //20
+  chassis.pid_drive_constants_set(10, 0.001, 80);///9/70
+  chassis.pid_drive_constants_backward_set(10, 0.001, 80);
+  chassis.pid_turn_constants_set(4.5, 0.002, 40);//2.30 /0.04 //20
   chassis.pid_swing_constants_set(5.8, 0, 68);//
 
   chassis.pid_turn_exit_condition_set(80_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
@@ -1464,7 +1666,7 @@ void default_constants() {
 
   chassis.pid_turn_chain_constant_set(3_deg);
   chassis.pid_swing_chain_constant_set(5_deg);
-  chassis.pid_drive_chain_constant_set(4_in);
+  chassis.pid_drive_chain_constant_set(3_in);
 
   chassis.slew_drive_constants_set(7_in, 80);
 }
