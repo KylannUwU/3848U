@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "3848U PROS",
+    "project_name": "SOLO_WP",
     "target": "v5",
     "templates": {
       "kernel": {
@@ -398,10 +398,10 @@
     },
     "upload_options": {
       "compress_bin": true,
-      "description": "Iniyan Iniya",
+      "description": "I",
       "remote_name": "EZ-Template",
       "slot": 1,
-      "icon": "pizza",
+      "icon": "power",
       "after": "run"
     },
     "use_early_access": false

@@ -18,7 +18,7 @@ ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
     {
         -10,
-        -12,
+        -11s,
         -13,
     },  // Left Chassis Ports (negative port will reverse it!)
     {
