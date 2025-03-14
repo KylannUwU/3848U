@@ -17,7 +17,7 @@ using pros::E_MOTOR_BRAKE_HOLD;
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
     {
-        -11,
+        -10,
         -12,
         -13,
     },  // Left Chassis Ports (negative port will reverse it!)
